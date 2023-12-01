@@ -5,7 +5,7 @@ import { ArrowRight } from 'lucide-react'
 
 export default function Home() {
   return (
-    <main className="h-screen px-2 flex flex-col items-center justify-center gap-y-6">
+    <main className="h-full px-2 flex flex-col items-center justify-center gap-y-6">
       <h1 className="text-3xl font-extrabold text-center text-transparent bg-clip-text bg-gradient-to-r via-rose-700 from-sky-700 to-indigo-700">
         Tenha todo o suporte para gerenciamento <br /> de seus atendimentos de
         graça

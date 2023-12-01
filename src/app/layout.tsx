@@ -22,7 +22,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn('min-h-screen antialiased sm:p-3', font.className)}>
+      <body className={cn('antialiased', font.className)}>
         {children}
         <Toaster />
       </body>
