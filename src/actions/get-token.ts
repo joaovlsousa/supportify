@@ -2,7 +2,7 @@
 
 import { cookies } from 'next/headers'
 
-export function getToken(): string | undefined {
+export async function getToken(): Promise<string | undefined> {
   const handleCookies = cookies()
 
   const token = handleCookies.get('token')

@@ -30,9 +30,16 @@ export async function POST(req: Request) {
   } catch (error) {
     console.log('Sign up error', error)
     if (error instanceof AxiosError) {
+      if (error.code === 'ECONNREFUSED') {
+        return NextResponse.json(
+          { error: 'Erro ao acessar o servidor' },
+          { status: 500 },
+        )
+      }
+
       return NextResponse.json(
         { error: error.response?.data.error as string },
-        { status: error.status },
+        { status: error.response?.status },
       )
     }
   }

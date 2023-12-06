@@ -26,13 +26,20 @@ export async function POST(req: Request) {
 
     await setToken(token)
 
-    return NextResponse.json(token, { status: 200 })
+    return NextResponse.json(token, { status: res.status })
   } catch (error) {
     console.log('Sign in error', error)
     if (error instanceof AxiosError) {
+      if (error.code === 'ECONNREFUSED') {
+        return NextResponse.json(
+          { error: 'Erro ao acessar o servidor' },
+          { status: 500 },
+        )
+      }
+
       return NextResponse.json(
         { error: error.response?.data.error as string },
-        { status: error.status },
+        { status: error.response?.status },
       )
     }
   }

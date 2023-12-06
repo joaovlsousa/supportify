@@ -11,7 +11,7 @@ const font = Montserrat({
 })
 
 export const metadata: Metadata = {
-  title: 'Support management',
+  title: 'Supportify',
   description: 'Control and management supports for your entrepise',
 }
 
