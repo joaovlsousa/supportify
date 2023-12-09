@@ -23,7 +23,7 @@ export function Footer() {
           Fale com o desenvolvedor:{' '}
         </p>
         {links.map((link) => (
-          <Link key={link.href} href={link.href}>
+          <Link key={link.href} href={link.href} target="_blank">
             <link.icon className="w-5 h-5 hover:text-primary transition-colors" />
           </Link>
         ))}
