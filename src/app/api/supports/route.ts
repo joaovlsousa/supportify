@@ -30,40 +30,7 @@ export async function POST(req: Request) {
 
     return NextResponse.json(res.data.client, { status: res.status })
   } catch (error) {
-    console.log('POST clients error', error)
-    if (error instanceof AxiosError) {
-      if (error.code === 'ECONNREFUSED') {
-        return NextResponse.json(
-          { error: 'Erro ao acessar o servidor' },
-          { status: 500 },
-        )
-      }
-
-      return NextResponse.json(
-        { error: error.response?.data.error as string },
-        { status: error.response?.status },
-      )
-    }
-  }
-}
-
-export async function GET(req: Request) {
-  try {
-    const token = await getToken()
-
-    if (!token) {
-      return NextResponse.redirect(new URL('/sign-in', req.url))
-    }
-
-    const res = await api.get('/clients', {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    })
-
-    return NextResponse.json(res.data.clients, { status: res.status })
-  } catch (error) {
-    console.log('GET clients error', error)
+    console.log('Sign in error', error)
     if (error instanceof AxiosError) {
       if (error.code === 'ECONNREFUSED') {
         return NextResponse.json(
