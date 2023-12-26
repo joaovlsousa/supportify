@@ -3,9 +3,11 @@ import { NextResponse } from 'next/server'
 
 import { getToken } from '@/actions/get-token'
 import { api } from '@/lib/api'
-import { clientSchema } from '@/schemas'
 
-export async function POST(req: Request) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { clientId: string } },
+) {
   try {
     const token = await getToken()
 
@@ -13,25 +15,15 @@ export async function POST(req: Request) {
       return NextResponse.redirect(new URL('/sign-in', req.url))
     }
 
-    const body = await req.json()
-    const payload = clientSchema.safeParse(body)
-
-    if (!payload.success) {
-      return NextResponse.json(
-        { error: 'Credenciais inválidas' },
-        { status: 400 },
-      )
-    }
-
-    const res = await api.post('/clients', payload.data, {
+    const res = await api.delete(`/clients/${params.clientId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    return NextResponse.json(res.data.client, { status: res.status })
+    return NextResponse.json(null, { status: res.status })
   } catch (error) {
-    console.log('POST clients error', error)
+    console.log('DELETE clients error', error)
     if (error instanceof AxiosError) {
       if (error.code === 'ECONNREFUSED') {
         return NextResponse.json(

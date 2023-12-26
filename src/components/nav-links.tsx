@@ -5,7 +5,7 @@ import { Home, MousePointerSquare, Users } from 'lucide-react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
 
-interface NavbarProps {
+interface NavLinksProps {
   isAside?: boolean
 }
 
@@ -27,7 +27,7 @@ const links = [
   },
 ]
 
-export function Navbar({ isAside = false }: NavbarProps) {
+export function NavLinks({ isAside = false }: NavLinksProps) {
   const pathname = usePathname()
 
   return (

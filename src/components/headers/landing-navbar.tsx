@@ -1,7 +1,7 @@
 import Link from 'next/link'
 
 import { getToken } from '@/actions/get-token'
-import { Logo } from '@/components/logo'
+import { Logo } from '@/components/layout/logo'
 import { Button } from '@/components/ui/button'
 
 export async function LandingHeader() {

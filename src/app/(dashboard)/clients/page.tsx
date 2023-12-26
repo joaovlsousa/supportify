@@ -1,7 +1,7 @@
 import { getToken } from '@/actions/get-token'
 import { api } from '@/lib/api'
 
-import { Error, ErrorSkeleton } from '@/components/error'
+import { Error, ErrorSkeleton } from '@/components/layout/error'
 import { Skeleton } from '@/components/ui/skeleton'
 
 import { Button } from '@/components/ui/button'
@@ -14,7 +14,9 @@ export interface ClientsBodySchema {
   id: string
   name: string
   role: 'PEOPLE' | 'COMPANY'
-  createdAt: Date
+  address: {
+    city: string
+  }
 }
 
 async function getClients() {

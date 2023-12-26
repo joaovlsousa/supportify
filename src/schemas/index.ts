@@ -49,3 +49,9 @@ export const clientSchema = z.object({
 })
 
 export type ClientSchema = z.infer<typeof clientSchema>
+
+export const updateUserSchema = z.object({
+  name: z.string({ required_error: 'Informe o nome' }).min(3, 'Nome inválido'),
+})
+
+export type UpdateUserSchema = z.infer<typeof updateUserSchema>

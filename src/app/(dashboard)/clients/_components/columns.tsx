@@ -1,10 +1,10 @@
 'use client'
 
 import axios, { AxiosError } from 'axios'
+import { Trash, UserCog } from 'lucide-react'
 import Link from 'next/link'
 import { toast } from 'sonner'
 
-import { formatDate } from '@/lib/utils'
 import { ColumnDef } from '@tanstack/react-table'
 import { ClientsBodySchema } from '../page'
 
@@ -16,7 +16,7 @@ import {
   TooltipProvider,
   TooltipTrigger,
 } from '@/components/ui/tooltip'
-import { Trash, UserCog } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 export const columns: ColumnDef<ClientsBodySchema>[] = [
   {
@@ -35,14 +35,8 @@ export const columns: ColumnDef<ClientsBodySchema>[] = [
     },
   },
   {
-    accessorKey: 'createdAt',
-    header: 'Data de cadastro',
-    cell: ({ row }) => {
-      const createdAt: Date = new Date(row.getValue('createdAt'))
-      const formattedDate = formatDate(createdAt)
-
-      return <p>{formattedDate}</p>
-    },
+    accessorKey: 'address.city',
+    header: 'Cidade',
   },
   {
     id: 'actions',
@@ -50,18 +44,28 @@ export const columns: ColumnDef<ClientsBodySchema>[] = [
       const client = row.original
       const clientName = client.name.split(' ').at(0)
 
+      // eslint-disable-next-line react-hooks/rules-of-hooks
+      const router = useRouter()
+
       async function deleteClient() {
         try {
-          const res = await axios.delete('/api/clients')
+          const res = await axios.delete(`/api/clients/${client.id}`)
 
           if (res.status === 200) {
             toast.success(`O cliente ${clientName} foi apagado`)
+            router.refresh()
           }
         } catch (error) {
           if (error instanceof AxiosError) {
             toast.error(error.response?.data.error)
           }
         }
+      }
+
+      function toasterDeleteClient() {
+        toast.promise(deleteClient(), {
+          loading: `Apagando o cliente ${clientName}...`,
+        })
       }
 
       return (
@@ -86,7 +90,7 @@ export const columns: ColumnDef<ClientsBodySchema>[] = [
                 <AlertCard
                   title={`Deseja apagar o cliente ${clientName}?`}
                   description="Você não poderá mais fazer atendimentos a este cliente."
-                  onConfirm={deleteClient}
+                  onConfirm={toasterDeleteClient}
                   variant="destructive"
                 >
                   <Button asChild variant="ghost" className="w-auto h-auto">

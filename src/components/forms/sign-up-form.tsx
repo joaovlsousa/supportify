@@ -8,15 +8,15 @@ import { toast } from 'sonner'
 
 import { SignUpSchema, signUpSchema } from '@/schemas'
 
-import { Loader } from '@/components/loader'
+import { Loader } from '@/components/layout/loader'
 import { Button } from '@/components/ui/button'
 import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-  FormMessage,
+    Form,
+    FormControl,
+    FormField,
+    FormItem,
+    FormLabel,
+    FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 

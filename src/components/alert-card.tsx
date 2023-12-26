@@ -17,20 +17,22 @@ interface AlertCardProps {
   description: string
   onConfirm: () => void
   disabled?: boolean
-  variant: 'destructive' | 'default'
+  variant?: 'destructive' | 'default'
+  className?: string
 }
 
 export function AlertCard({
   children,
   description,
   title,
-  variant,
+  variant = 'default',
   disabled,
   onConfirm,
+  className,
 }: AlertCardProps) {
   return (
     <AlertDialog>
-      <AlertDialogTrigger asChild className="w-full">
+      <AlertDialogTrigger asChild className={cn('w-full', className)}>
         {children}
       </AlertDialogTrigger>
       <AlertDialogContent>
