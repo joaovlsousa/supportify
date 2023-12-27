@@ -15,11 +15,11 @@ const links = [
 export function Footer() {
   return (
     <footer className="w-full h-14 px-8 absolute bottom-0 border-t flex items-center justify-evenly">
-      <p className="text-sm text-muted-foreground">
+      <p className="text-xs md:text-sm text-muted-foreground">
         &copy; Todos os direitos reservados
       </p>
       <div className="flex items-center gap-x-4">
-        <p className="text-sm text-muted-foreground">
+        <p className="text-xs md:text-sm text-muted-foreground">
           Fale com o desenvolvedor:{' '}
         </p>
         {links.map((link) => (

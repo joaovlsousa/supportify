@@ -11,12 +11,12 @@ import { SignUpSchema, signUpSchema } from '@/schemas'
 import { Loader } from '@/components/layout/loader'
 import { Button } from '@/components/ui/button'
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage,
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
 
@@ -51,7 +51,10 @@ export function SignUpForm() {
 
   return (
     <Form {...formMethods}>
-      <form onSubmit={handleSubmit(onSubmit)} className="w-2/5 space-y-4">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-4/5 md:w-2/5 space-y-4"
+      >
         <FormItem>
           <FormField
             control={control}

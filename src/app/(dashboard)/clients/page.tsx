@@ -40,7 +40,7 @@ export default async function ClientsPage() {
   const clients = await getClients()
 
   if (!clients.length) {
-    return null
+    return <Error label="Nenhum cliente cadastrado" hideLink />
   }
 
   return (

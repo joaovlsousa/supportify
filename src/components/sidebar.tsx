@@ -25,8 +25,8 @@ export function Sidebar() {
           <Menu className="w-5 h-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent side="left">
-        <div className="pt-8" onClick={onClose}>
+      <SheetContent side="left" onClick={onClose}>
+        <div className="pt-8">
           <NavLinks isAside />
         </div>
       </SheetContent>

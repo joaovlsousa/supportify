@@ -1,13 +1,13 @@
 import Link from 'next/link'
 
-import { getToken } from '@/actions/get-token'
 import { Logo } from '@/components/layout/logo'
 import { Button } from '@/components/ui/button'
 
-export async function LandingHeader() {
-  const token = await getToken()
-  const isAuthenticated = !!token
+interface LandingHeaderProps {
+  isAuthenticated: boolean
+}
 
+export function LandingHeader({ isAuthenticated }: LandingHeaderProps) {
   const link = isAuthenticated
     ? { label: 'Dashboard', href: '/home' }
     : { label: 'Comece agora', href: '/sign-up' }

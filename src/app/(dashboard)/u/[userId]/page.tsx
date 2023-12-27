@@ -60,7 +60,7 @@ export default async function UserPage({
 
   return (
     <main className="scroll-smooth h-full flex justify-center px-2 md:px-0">
-      <div className="w-full h-full space-y-4 md:w-[42rem] md:p-4 md:bg-muted md:rounded-md">
+      <div className="w-full h-full space-y-4 md:w-[42rem] md:p-4 md:border md:rounded-md">
         <section className="space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
