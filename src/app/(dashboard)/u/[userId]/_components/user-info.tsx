@@ -8,9 +8,9 @@ interface UserInfoProps {
 
 export function UserInfo({ label, value }: UserInfoProps) {
   return (
-    <div className="md:w-3/5 space-y-1 p-3 rounded-md bg-gray-900">
+    <div className="space-y-1 p-3 rounded-md">
       <Label className="text-muted-foreground">{label}</Label>
-      <Input disabled value={value} className="border-0 disabled:cursor-text" />
+      <Input disabled value={value} className="disabled:cursor-text" />
     </div>
   )
 }

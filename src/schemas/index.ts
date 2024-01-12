@@ -50,6 +50,19 @@ export const clientSchema = z.object({
 
 export type ClientSchema = z.infer<typeof clientSchema>
 
+export const supportSchema = z.object({
+  clientId: z
+    .string({ required_error: 'Informe o nome do cliente/empresa' })
+    .cuid2('Usuário inválido'),
+  title: z.string({ required_error: 'Informe o assunto' }),
+  description: z.string({ required_error: 'Informe a descrição' }),
+  priority: z.enum(['HIGH', 'MEDIUM', 'LOW'], {
+    required_error: 'Informe a prioridade',
+  }),
+})
+
+export type SupportSchema = z.infer<typeof supportSchema>
+
 export const updateUserSchema = z.object({
   name: z.string({ required_error: 'Informe o nome' }).min(3, 'Nome inválido'),
 })

@@ -20,7 +20,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table'
-import { Link, UserPlus } from 'lucide-react'
+import { MousePointerSquare } from 'lucide-react'
+import Link from 'next/link'
 import { useState } from 'react'
 
 interface DataTableProps<TData, TValue> {
@@ -50,10 +51,10 @@ export function DataTable<TData, TValue>({
     <div>
       <div className="flex items-center py-4 gap-x-10">
         <Input
-          placeholder="Procurar cliente..."
-          value={(table.getColumn('name')?.getFilterValue() as string) ?? ''}
+          placeholder="Procurar atendimento..."
+          value={(table.getColumn('title')?.getFilterValue() as string) ?? ''}
           onChange={(event) =>
-            table.getColumn('name')?.setFilterValue(event.target.value)
+            table.getColumn('title')?.setFilterValue(event.target.value)
           }
           className="max-w-sm h-11"
         />
@@ -67,7 +68,7 @@ export function DataTable<TData, TValue>({
         </Button>
         <Button asChild variant="outline" size="lg">
           <Link href="/supports/new">
-            <UserPlus className="w-4 h-4 mr-2" />
+            <MousePointerSquare className="w-4 h-4 mr-2" />
             Novo atendimento
           </Link>
         </Button>

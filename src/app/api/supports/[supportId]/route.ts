@@ -3,9 +3,11 @@ import { NextResponse } from 'next/server'
 
 import { getToken } from '@/actions/get-token'
 import { api } from '@/lib/api'
-import { supportSchema } from '@/schemas'
 
-export async function POST(req: Request) {
+export async function DELETE(
+  req: Request,
+  { params }: { params: { supportId: string } },
+) {
   try {
     const token = await getToken()
 
@@ -13,25 +15,15 @@ export async function POST(req: Request) {
       return NextResponse.redirect(new URL('/sign-in', req.url))
     }
 
-    const body = await req.json()
-    const payload = supportSchema.safeParse(body)
-
-    if (!payload.success) {
-      return NextResponse.json(
-        { error: 'Credenciais inválidas' },
-        { status: 400 },
-      )
-    }
-
-    const res = await api.post('/supports', payload.data, {
+    const res = await api.delete(`/supports/${params.supportId}`, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
 
-    return NextResponse.json(res.data.support, { status: res.status })
+    return NextResponse.json(null, { status: res.status })
   } catch (error) {
-    console.log('POST support error', error)
+    console.log('DELETE supports error', error)
     if (error instanceof AxiosError) {
       if (error.code === 'ECONNREFUSED') {
         return NextResponse.json(

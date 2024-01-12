@@ -32,7 +32,7 @@ export function NewClientForm() {
 
   const {
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
     control,
   } = formMethods
 
@@ -102,7 +102,7 @@ export function NewClientForm() {
                 <FormControl>
                   <Input id="name" {...field} />
                 </FormControl>
-                <FormMessage>{errors.name?.message?.toString()}</FormMessage>
+                <FormMessage />
               </>
             )}
           />
@@ -122,9 +122,7 @@ export function NewClientForm() {
                 <FormControl>
                   <Input id="address.city" {...field} />
                 </FormControl>
-                <FormMessage>
-                  {errors.address?.city?.message?.toString()}
-                </FormMessage>
+                <FormMessage />
               </>
             )}
           />
@@ -140,9 +138,7 @@ export function NewClientForm() {
                 <FormControl>
                   <Input id="address.street" {...field} />
                 </FormControl>
-                <FormMessage>
-                  {errors.address?.street?.message?.toString()}
-                </FormMessage>
+                <FormMessage />
               </>
             )}
           />
@@ -158,9 +154,7 @@ export function NewClientForm() {
                 <FormControl>
                   <Input id="address.number" {...field} />
                 </FormControl>
-                <FormMessage>
-                  {errors.address?.number?.message?.toString()}
-                </FormMessage>
+                <FormMessage />
               </>
             )}
           />

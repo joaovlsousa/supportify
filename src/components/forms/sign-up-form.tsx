@@ -30,7 +30,7 @@ export function SignUpForm() {
 
   const {
     handleSubmit,
-    formState: { errors, isSubmitting },
+    formState: { isSubmitting },
     control,
   } = formMethods
 
@@ -66,7 +66,7 @@ export function SignUpForm() {
                 <FormControl>
                   <Input id="name" {...field} />
                 </FormControl>
-                <FormMessage>{errors.name?.message?.toString()}</FormMessage>
+                <FormMessage />
               </>
             )}
           />
@@ -82,7 +82,7 @@ export function SignUpForm() {
                 <FormControl>
                   <Input id="email" {...field} />
                 </FormControl>
-                <FormMessage>{errors.email?.message?.toString()}</FormMessage>
+                <FormMessage />
               </>
             )}
           />
@@ -98,9 +98,7 @@ export function SignUpForm() {
                 <FormControl>
                   <Input id="password" type="password" {...field} />
                 </FormControl>
-                <FormMessage>
-                  {errors.password?.message?.toString()}
-                </FormMessage>
+                <FormMessage />
               </>
             )}
           />

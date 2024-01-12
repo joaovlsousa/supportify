@@ -84,10 +84,15 @@ export default async function UserPage({
             </div>
           </div>
 
-          <UserInfo label="E-mail de acesso" value={user.email} />
-          <UserInfo label="Quantidade de clientes" value={user.totalClients} />
-          <UserInfo label="Conta criada em" value={createdAt} />
-          <UserInfo label="Última atualização" value={updatedAt} />
+          <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-2">
+            <UserInfo label="E-mail de acesso" value={user.email} />
+            <UserInfo
+              label="Quantidade de clientes"
+              value={user.totalClients}
+            />
+            <UserInfo label="Conta criada em" value={createdAt} />
+            <UserInfo label="Última atualização" value={updatedAt} />
+          </div>
         </section>
         <section id="settings" className="space-y-4">
           <div className="flex items-center space-x-2">

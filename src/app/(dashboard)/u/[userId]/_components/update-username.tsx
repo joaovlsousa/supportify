@@ -52,7 +52,7 @@ export function UpdateUsername({ currentUsername }: UpdateUsernameProps) {
     }
   }
   return (
-    <div className="p-3 rounded-md bg-gray-900">
+    <div className="p-3 rounded-md">
       <Form {...form}>
         <form
           onSubmit={handleSubmit(onSubmit)}

@@ -30,7 +30,7 @@ export function SignInForm() {
 
   const {
     handleSubmit,
-    formState: { errors, isValid, isSubmitting },
+    formState: { isSubmitting },
     control,
   } = formMethods
 
@@ -66,9 +66,7 @@ export function SignInForm() {
                 <FormControl>
                   <Input id="email" {...field} />
                 </FormControl>
-                {!isValid && (
-                  <FormMessage>{errors.email?.message?.toString()}</FormMessage>
-                )}
+                <FormMessage />
               </>
             )}
           />
@@ -84,9 +82,7 @@ export function SignInForm() {
                 <FormControl>
                   <Input id="password" type="password" {...field} />
                 </FormControl>
-                <FormMessage>
-                  {errors.password?.message?.toString()}
-                </FormMessage>
+                <FormMessage />
               </>
             )}
           />
